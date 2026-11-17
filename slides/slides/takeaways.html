@@ -1,0 +1,39 @@
+<section id="takeaways" class="dark">
+<div class="head">
+<p class="eyebrow">6 · TAKEAWAYS</p>
+<h2>Three things to remember</h2>
+</div>
+<div class="row" style="gap:40px;align-items:flex-start">
+<div class="col" style="width:724px;gap:36px">
+<div class="row rise" style="--i:0;gap:24px;align-items:flex-start">
+<p class="mono" style="font-size:44px;font-weight:600;color:#F49A6E;width:80px">01</p>
+<div class="col" style="gap:8px;width:620px"><h3>Train ~2 % of the weights, keep most of the quality</h3><p class="small">Ours: held-out loss <b>1.272</b> LoRA vs <b>1.285</b> full FT, with 1.75 % of the weights</p></div>
+</div>
+<div class="row rise" style="--i:1;gap:24px;align-items:flex-start">
+<p class="mono" style="font-size:44px;font-weight:600;color:#F49A6E;width:80px">02</p>
+<div class="col" style="gap:8px;width:620px"><h3>QLoRA puts fine-tuning on a single GPU</h3><p class="small">Ours, 3B on a 14.6 GB T4: full FT out of memory, QLoRA <b>7.6 GB</b></p></div>
+</div>
+<div class="row rise" style="--i:2;gap:24px;align-items:flex-start">
+<p class="mono" style="font-size:44px;font-weight:600;color:#F49A6E;width:80px">03</p>
+<div class="col" style="gap:8px;width:620px"><h3>It is not free</h3><p class="small">Ours: QLoRA <b>1.28×</b> slower per step than LoRA; r = 1 lost <b>2.4</b> points on SST-2</p></div>
+</div>
+</div>
+<div class="card rise" style="--i:3;width:900px;gap:12px">
+<p class="lbl" style="color:#F7F5F0">Sources</p>
+<ol style="font-size:24px;line-height:1.4;color:#C3CEDF;margin:0;padding-left:40px">
+<li>Hu et al. · LoRA · ICLR 2022 · arXiv:2106.09685</li>
+<li>Dettmers et al. · QLoRA · NeurIPS 2023 · arXiv:2305.14314</li>
+<li>Houlsby et al. · Adapters · ICML 2019 · arXiv:1902.00751</li>
+<li>Aghajanyan et al. · 2020 · arXiv:2012.13255</li>
+<li>Biderman et al. · TMLR 2024 · arXiv:2405.09673</li>
+<li>Rajbhandari et al. · ZeRO · 2020 · arXiv:1910.02054</li>
+<li>Sheng et al. · S-LoRA · 2023 · arXiv:2311.03285</li>
+<li>Apple ML Research · Foundation Models · June 2024</li>
+<li>Hugging Face PEFT docs · huggingface.co/docs/peft</li>
+<li>Our notebook · <a href="https://www.kaggle.com/code/krishnkant212/notebook9e332a5033" style="color:inherit">kaggle.com/code/krishnkant212/notebook9e332a5033</a></li>
+</ol>
+</div>
+</div>
+<div class="foot"><p class="ft">Questions welcome · this slide stays up during Q&amp;A</p><p class="ft pg"></p></div>
+<aside>Speaker A · 5:30–6:00. Three takeaways, one breath each, each with our own number. Then: “Thank you, happy to take questions.” Leave this slide up during Q&amp;A so the sources stay visible. Backup slides 9–12 hold the H2, H3, H4 evidence and prepared answers.</aside>
+</section>

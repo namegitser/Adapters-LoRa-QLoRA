@@ -1,0 +1,10 @@
+# torch comes from the cluster module (module load python): never list or pip-install it here
+transformers>=4.44
+peft>=0.12
+datasets>=2.20
+accelerate>=0.33
+bitsandbytes>=0.48   # >=0.48 needed for CUDA 13 (module torch is cu130)
+huggingface_hub>=0.24
+pandas
+matplotlib
+tabulate

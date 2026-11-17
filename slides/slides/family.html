@@ -1,0 +1,34 @@
+<section id="family" class="alt">
+<div class="head">
+<p class="eyebrow">2 · THE FAMILY</p>
+<h2>Three ways to train a small add-on</h2>
+</div>
+<div class="row" style="gap:32px;align-items:stretch">
+<div class="card rise" style="--i:0;width:533px">
+<div class="bar-top" style="background:#6B7A90"></div>
+<h3>Adapters</h3>
+<p class="lbl">Houlsby et al. 2019</p>
+<p class="ct"><b>Trains:</b> small bottleneck layers inserted in every block</p>
+<p class="ct"><b>Inference:</b> extra sequential layers add latency</p>
+<p class="ct"><b>Paper:</b> within 0.4 % of full fine-tuning on GLUE, with 3.6 % extra parameters per task</p>
+</div>
+<div class="card rise" style="--i:1;width:533px">
+<div class="bar-top" style="background:#EB6834"></div>
+<h3>LoRA</h3>
+<p class="lbl">Hu et al. 2021</p>
+<p class="ct"><b>Trains:</b> a parallel low-rank path B·A beside each frozen matrix</p>
+<p class="ct"><b>Inference:</b> merged into W₀, zero added latency</p>
+<p class="ct"><b>Paper:</b> GPT-3 175B with 10,000× fewer trainable parameters and 3× less GPU memory</p>
+</div>
+<div class="card rise" style="--i:2;width:533px">
+<div class="bar-top" style="background:#1BAF7A"></div>
+<h3>QLoRA</h3>
+<p class="lbl">Dettmers et al. 2023</p>
+<p class="ct"><b>Trains:</b> LoRA on a frozen base stored in 4-bit NF4</p>
+<p class="ct"><b>Inference:</b> 4-bit weights de-quantized on the fly</p>
+<p class="ct"><b>Paper:</b> fine-tunes a 65 B model on a single 48 GB GPU</p>
+</div>
+</div>
+<div class="foot"><p class="ft">Houlsby et al., ICML 2019 · Hu et al., ICLR 2022 · Dettmers et al., NeurIPS 2023</p><p class="ft pg"></p></div>
+<aside>Speaker B · 1:35–2:00. One sentence per card. Adapters came first: extra small layers inside each block, which add latency because they run in sequence. LoRA puts the small part in parallel, so it can be merged away after training. QLoRA keeps LoRA but stores the frozen base model in 4 bits (NF4), plus double quantization and paged optimizers, which is how a 65 B model fits on one 48 GB GPU. Colour key for the rest of the talk: orange = LoRA, green = QLoRA, blue = full fine-tuning.</aside>
+</section>

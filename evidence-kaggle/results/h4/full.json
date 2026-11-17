@@ -1,0 +1,33 @@
+{
+  "exp": "h4",
+  "run": "full",
+  "variant": "full",
+  "base_model": "Qwen/Qwen2.5-0.5B",
+  "window": 1024,
+  "stride": 512,
+  "amp_dtype": "float16",
+  "h1_seed": 42,
+  "env": {
+    "timestamp": "2026-11-17T14:47:33",
+    "hostname": "7de374eb4f07",
+    "slurm_job_id": null,
+    "slurm_array_task_id": null,
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "transformers": "5.20.2",
+    "peft": "0.21.2",
+    "datasets": "4.8.5",
+    "accelerate": "1.15.0",
+    "bitsandbytes": "0.50.2",
+    "gpu_name": "Tesla T4",
+    "gpu_mem_gb": 14.6
+  },
+  "source": "/tmp/peft_ckpts/h1/full_seed42",
+  "wikitext2_ppl": 12.7944,
+  "wikitext2_nll": 2.54901,
+  "n_tokens_scored": 299077,
+  "peak_mem_gb": 2.381,
+  "status": "ok",
+  "wall_time_s": 102.5
+}

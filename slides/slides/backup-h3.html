@@ -1,0 +1,28 @@
+<section id="backup-h3">
+<div class="head">
+<p class="eyebrow">BACKUP · H3 · RANK SWEEP</p>
+<h2>How small can r be? Accuracy flattens from r = 4</h2>
+</div>
+<div class="row" style="gap:48px;align-items:flex-start">
+<img class="rise" src="/_blob/c1a5435af7e645c13b35ed9e8c3fb409" alt="SST-2 accuracy vs LoRA rank: r=1 85.7%, r=4 87.6%, r=16 87.5%, r=64 88.1%, full FT 88.1%" style="--i:0;width:1040px;height:650px;object-fit:contain;border-radius:16px;background:#FCFCFA">
+<div class="col" style="width:560px;gap:20px">
+<div class="card rise" style="--i:1;gap:6px;padding:24px 32px">
+<p class="lbl">R = 1</p>
+<p class="mono" style="font-size:44px;font-weight:600;color:#14213D;line-height:1.1">85.7 %</p>
+<p class="ct">18 K LoRA weights: too small</p>
+</div>
+<div class="card rise" style="--i:2;gap:6px;padding:24px 32px">
+<p class="lbl">R = 4</p>
+<p class="mono" style="font-size:44px;font-weight:600;color:#14213D;line-height:1.1">87.6 %</p>
+<p class="ct">74 K LoRA weights: most of the gain</p>
+</div>
+<div class="card rise" style="--i:3;gap:6px;padding:24px 32px">
+<p class="lbl">FULL FT</p>
+<p class="mono" style="font-size:44px;font-weight:600;color:#14213D;line-height:1.1">88.1 %</p>
+<p class="ct">67 M weights; r = 64 matches it</p>
+</div>
+</div>
+</div>
+<div class="foot"><p class="ft">DistilBERT · SST-2, 20k training examples, 1 epoch · one seed · measured LoRA params = r(d+k) exactly</p><p class="ft pg"></p></div>
+<aside>Backup, only if asked. Accuracy jumps from r = 1 to r = 4 and then flattens; r = 64 matches full fine-tuning. This is the plateau the LoRA paper reports: the useful update is low-rank. One seed only, so differences under about half a point (r = 4 vs r = 16) are noise. The measured LoRA parameter count matched the formula r × (d + k) at every rank.</aside>
+</section>

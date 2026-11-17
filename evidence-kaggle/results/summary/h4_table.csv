@@ -1,0 +1,6 @@
+Model,WikiText-2 ppl (forgetting),Change vs its base,Alpaca held-out loss (learning)
+Base (bf16),12.501,reference,1.318
+Base (4-bit NF4),13.872,reference,1.412
+Full FT,12.794,+0.293 (+2.3%),1.285
+LoRA,12.625,+0.124 (+1.0%),1.272
+QLoRA,13.679,-0.193 (-1.4%),1.322

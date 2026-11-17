@@ -1,0 +1,2 @@
+Before doing anything you need to reason if this can be done is less code or not. and choose the less code version. 
+You must mention at each step what you did and wmention any problem you encountered in the file explanability.md crete it if it doesn't exist. 

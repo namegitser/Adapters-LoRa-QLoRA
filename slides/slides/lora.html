@@ -1,0 +1,39 @@
+<section id="lora">
+<div class="head">
+<p class="eyebrow">2 · THE IDEA</p>
+<h2>LoRA: freeze W₀, train a low-rank B·A</h2>
+</div>
+<div class="row" style="gap:64px;align-items:flex-start">
+<div class="col" style="width:600px;gap:22px">
+<p class="mono rise" style="--i:0;font-size:44px;font-weight:600;color:#14213D">h = W₀x + B·A·x</p>
+<ul class="rise" style="--i:1;font-size:26px;line-height:1.4;color:#46506A;margin:0;padding-left:32px">
+<li>A is r × k, B is d × r, with r ≪ d</li>
+<li>Fine-tuning updates have low “intrinsic rank”, so a small r is enough (Aghajanyan 2020; Hu 2021)</li>
+<li>B starts at 0, so training begins exactly at the pretrained model</li>
+<li>After training, merge W = W₀ + BA: no extra inference latency</li>
+</ul>
+<div class="card rise" style="--i:2;gap:8px;border-color:#EB6834">
+<p class="lbl">One 4096 × 4096 projection</p>
+<p class="ct">Full: <b>16.8 M</b> parameters<br>LoRA r = 8: 8 × (4096 + 4096) = <b>65,536</b><br><span class="blank"><b>= 0.39 % of the matrix</b></span></p>
+</div>
+</div>
+<div class="rise" style="--i:3;position:relative;width:1000px;height:560px">
+<div class="box box-x" style="left:0px;top:230px;width:120px;height:100px"><p class="bl">x</p></div>
+<div class="box box-w" style="left:220px;top:40px;width:360px;height:220px"><p class="bl">W₀</p><p class="bs">frozen · d × k</p></div>
+<div class="box box-a" style="left:220px;top:360px;width:150px;height:120px"><p class="bl">A</p><p class="bs">r × k</p></div>
+<div class="box box-b" style="left:430px;top:360px;width:150px;height:120px"><p class="bl">B</p><p class="bs">d × r</p></div>
+<div class="box box-plus" style="left:690px;top:230px;width:100px;height:100px"><p class="bl">+</p></div>
+<div class="box box-x" style="left:860px;top:230px;width:120px;height:100px"><p class="bl">h</p></div>
+<p style="position:absolute;left:220px;top:500px;width:520px;font-size:24px;color:#B4441A"><b>trainable</b> · only r(d + k) numbers</p>
+<p style="position:absolute;left:220px;top:0px;width:360px;font-size:24px;color:#46506A">pretrained, never updated</p>
+<x-connector class="wire" x1="120" y1="280" x2="220" y2="150" route="elbow" head="end"></x-connector>
+<x-connector class="wire-t" x1="120" y1="280" x2="220" y2="420" route="elbow" head="end"></x-connector>
+<x-connector class="wire-t" x1="370" y1="420" x2="430" y2="420" route="straight" head="end"></x-connector>
+<x-connector class="wire" x1="580" y1="150" x2="740" y2="230" route="hv" head="end"></x-connector>
+<x-connector class="wire-t" x1="580" y1="420" x2="740" y2="330" route="hv" head="end"></x-connector>
+<x-connector class="wire" x1="790" y1="280" x2="860" y2="280" route="straight" head="end"></x-connector>
+</div>
+</div>
+<div class="foot"><p class="ft">Hu et al. 2021 (LoRA) · Aghajanyan et al. 2020 (intrinsic dimension)</p><p class="ft pg"></p></div>
+<aside>Speaker B · 0:50–1:35. Point at the diagram: input x goes through the frozen W₀ (grey) and, in parallel, through the small trainable path A then B (orange); the two outputs are added. Only A and B are trained. Work the numbers live: a 4096 × 4096 projection has 16.8 M parameters; with rank 8, LoRA adds 8 × (4096 + 4096) = 65,536, which is 0.39 %. Two design details people ask about: B is initialised to zero, so at step 0 the model is exactly the pretrained one; and after training BA can be added into W₀, so inference costs nothing extra. Why it works: Aghajanyan et al. showed fine-tuning has a low intrinsic dimension, and Hu et al. found the weight update itself is low-rank.</aside>
+</section>

@@ -1,0 +1,16 @@
+<section id="backup-qa" class="alt">
+<div class="head">
+<p class="eyebrow">BACKUP · PREPARED ANSWERS</p>
+<h2>Likely questions</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+<div class="card" style="gap:10px;padding:28px 32px"><h3>How do you choose r?</h3><p class="ct">Start small (4–16); raise it for harder or knowledge-heavy tasks; tune on validation.</p></div>
+<div class="card" style="gap:10px;padding:28px 32px"><h3>Why is B initialised to zero?</h3><p class="ct">So BA = 0 at the start: training begins exactly at the pretrained model.</p></div>
+<div class="card" style="gap:10px;padding:28px 32px"><h3>Does LoRA slow inference?</h3><p class="ct">Not once merged (W = W₀ + BA). Kept separate to hot-swap, it adds a small cost.</p></div>
+<div class="card" style="gap:10px;padding:28px 32px"><h3>LoRA or adapters?</h3><p class="ct">Both freeze the base. Adapters add sequential layers; LoRA is parallel and mergeable.</p></div>
+<div class="card" style="gap:10px;padding:28px 32px"><h3>What does α do?</h3><p class="ct">Scales the update by α / r, so changing r needs less re-tuning of the learning rate.</p></div>
+<div class="card" style="gap:10px;padding:28px 32px"><h3>Why not the paper’s 10,000×?</h3><p class="ct">That is GPT-3 175B with few adapted matrices; our model is ~350× smaller, all layers adapted.</p></div>
+</div>
+<div class="foot"><p class="ft">If we don’t know: “I don’t know, and here is how I’d find out.”</p><p class="ft pg"></p></div>
+<aside>Backup for Q&amp;A. More answers if needed. Which layers? The original LoRA paper adapted the attention q and v projections; QLoRA found that adapting all linear layers was needed to match full fine-tuning, which is what we did. Is QLoRA lower quality? The QLoRA paper reports matching 16-bit full fine-tuning on its benchmarks thanks to NF4 and double quantization; it is slower to train. If a question goes beyond what we know, say so and describe how you would test it.</aside>
+</section>

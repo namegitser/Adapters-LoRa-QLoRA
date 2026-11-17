@@ -1,0 +1,37 @@
+<section id="problem">
+<div class="head">
+<p class="eyebrow">1 · THE PROBLEM</p>
+<h2>Updating every weight needs more memory than one GPU has</h2>
+</div>
+<div class="row" style="gap:64px;align-items:flex-start">
+<div class="col" style="width:1000px;gap:28px">
+<p class="bignum rise" style="--i:0">≈ 112 GB</p>
+<p class="lead rise" style="--i:1">to fully fine-tune a <b>7 B-parameter</b> model in fp16 with Adam: more than one 80 GB A100 holds.</p>
+<div class="col rise" style="--i:2;gap:12px">
+<div class="row" style="gap:0px;width:1000px;height:64px">
+<div style="width:125px;height:64px;background:#14213D;border-radius:12px 0px 0px 12px"></div>
+<div style="width:125px;height:64px;background:#5B6B88"></div>
+<div style="width:750px;height:64px;background:#EB6834;border-radius:0px 12px 12px 0px"></div>
+</div>
+<div class="row" style="gap:0px;width:1000px">
+<p class="small ink" style="width:125px">2 B weights</p>
+<p class="small ink" style="width:125px">2 B grads</p>
+<p class="small ink" style="width:750px">12 B Adam states + fp32 master copy = <b>16 bytes per parameter</b></p>
+</div>
+</div>
+</div>
+<div class="col" style="width:600px;gap:24px">
+<div class="card rise" style="--i:3">
+<h3>One full copy per task</h3>
+<p class="ct">Ten fine-tuned 7 B models are ten 14 GB files to store and serve.</p>
+</div>
+<div class="card rise" style="--i:4">
+<h3>Catastrophic forgetting</h3>
+<p class="ct">Rewriting every weight for the new task can erase what the model already knew.</p>
+</div>
+</div>
+</div>
+<p class="lead rise" style="--i:5;color:#B4441A"><b>Do we really need to update all 7 billion numbers?</b></p>
+<div class="foot"><p class="ft">16 bytes/parameter accounting: Rajbhandari et al. 2020 (ZeRO)</p><p class="ft pg"></p></div>
+<aside>Speaker A · 0:00–0:50. Hook: fully fine-tuning a 7 B model in fp16 with Adam needs about 16 bytes per parameter: 2 for the fp16 weights, 2 for the gradients, 12 for Adam's two fp32 moment estimates plus an fp32 master copy of the weights. 7 billion × 16 bytes ≈ 112 GB, before activations. One A100 has 80 GB. That is our own arithmetic; the 16-byte accounting is from the ZeRO paper. Two more costs: one full copy of the model per task, and catastrophic forgetting. End on the question to the audience and pause.</aside>
+</section>

@@ -1,0 +1,35 @@
+<section id="usage">
+<div class="head">
+<p class="eyebrow">3 · IN THE WILD</p>
+<h2>PEFT is how fine-tuning ships today</h2>
+</div>
+<div class="row" style="gap:32px;align-items:stretch">
+<div class="card rise" style="--i:0;width:392px">
+<x-icon name="Code" style="color:#B4441A;width:56px;height:56px"></x-icon>
+<h3>Hugging Face PEFT</h3>
+<p class="ct">The standard open-source library: LoRA, QLoRA, adapters and prompt tuning in a few lines.</p>
+<p class="lbl" style="font-weight:400;color:#5D6578">huggingface.co/docs/peft</p>
+</div>
+<div class="card rise" style="--i:1;width:392px">
+<x-icon name="Lightning" style="color:#B4441A;width:56px;height:56px"></x-icon>
+<h3>Apple Intelligence</h3>
+<p class="ct">One on-device base model, with small task-specific LoRA adapters swapped in at runtime.</p>
+<p class="lbl" style="font-weight:400;color:#5D6578">Apple ML Research, June 2024</p>
+</div>
+<div class="card rise" style="--i:2;width:392px">
+<x-icon name="Database" style="color:#B4441A;width:56px;height:56px"></x-icon>
+<h3>Multi-LoRA serving</h3>
+<p class="ct">S-LoRA and vLLM serve thousands of adapters on top of one shared base model.</p>
+<p class="lbl" style="font-weight:400;color:#5D6578">Sheng et al. 2023 (S-LoRA)</p>
+</div>
+<div class="card rise" style="--i:3;width:392px">
+<x-icon name="Star" style="color:#B4441A;width:56px;height:56px"></x-icon>
+<h3>Image generation</h3>
+<p class="ct">Stable Diffusion style and character LoRAs: megabyte files on a multi-gigabyte base.</p>
+<p class="lbl" style="font-weight:400;color:#5D6578">Community LoRA ecosystem</p>
+</div>
+</div>
+<p class="lead rise" style="--i:4">Common pattern: <b class="ink">one frozen base model, many small swappable adapters.</b></p>
+<div class="foot"><p class="ft">Sources: HF PEFT docs · Apple, “Introducing Apple’s On-Device and Server Foundation Models” (2024) · Sheng et al. 2023</p><p class="ft pg"></p></div>
+<aside>Speaker C · 2:00–2:40. Keep it short, one line per tile. The point to land: the same pattern everywhere, one frozen base and many small adapters you can swap. That is exactly the “one copy per task” cost from slide 1, solved. Then hand over to our own evidence.</aside>
+</section>

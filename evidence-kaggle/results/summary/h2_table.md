@@ -1,0 +1,5 @@
+| Method (Qwen2.5-3B)   | Outcome                             | Trainable params   |   Weights on GPU (GB) | Peak GPU mem (GB)   | Sec / step   |
+|:----------------------|:------------------------------------|:-------------------|----------------------:|:--------------------|:-------------|
+| Full FT               | OOM at train step0 forward backward | 3.09B              |                 11.5  | OOM (> 15 GB)       | -            |
+| LoRA                  | trains                              | 29.9M              |                  5.86 | 9.99                | 8.04         |
+| QLoRA                 | trains                              | 29.9M              |                  2.62 | 7.61                | 10.01        |

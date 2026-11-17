@@ -1,0 +1,28 @@
+<section id="backup-h4">
+<div class="head">
+<p class="eyebrow">BACKUP · H4 · FORGETTING</p>
+<h2>Does LoRA forget less? Here, yes</h2>
+</div>
+<div class="row" style="gap:48px;align-items:flex-start">
+<img class="rise" src="/_blob/7158f937fa8e9197c1f304df2bfec39b" alt="WikiText-2 perplexity change vs base: full FT +2.3%, LoRA +1.0%, QLoRA -1.4% vs its 4-bit base" style="--i:0;width:1040px;height:650px;object-fit:contain;border-radius:16px;background:#FCFCFA">
+<div class="col" style="width:560px;gap:20px">
+<div class="card rise" style="--i:1;gap:6px;padding:24px 32px">
+<p class="lbl">FULL FT</p>
+<p class="mono" style="font-size:44px;font-weight:600;color:#14213D;line-height:1.1">+2.3 %</p>
+<p class="ct">Perplexity 12.50 → 12.79</p>
+</div>
+<div class="card rise" style="--i:2;gap:6px;padding:24px 32px">
+<p class="lbl">LORA</p>
+<p class="mono" style="font-size:44px;font-weight:600;color:#14213D;line-height:1.1">+1.0 %</p>
+<p class="ct">Perplexity 12.50 → 12.63: less than half the rise</p>
+</div>
+<div class="card rise" style="--i:3;gap:6px;padding:24px 32px">
+<p class="lbl">QLORA</p>
+<p class="mono" style="font-size:44px;font-weight:600;color:#14213D;line-height:1.1">−1.4 %</p>
+<p class="ct">vs its 4-bit base (13.87 → 13.68)</p>
+</div>
+</div>
+</div>
+<div class="foot"><p class="ft">WikiText-2 test perplexity, after the slide-6 Alpaca training · lower is better · Biderman et al., TMLR 2024</p><p class="ft pg"></p></div>
+<aside>Backup, only if asked. We measured perplexity on general text (WikiText-2) before and after the Alpaca fine-tuning from slide 6. Full fine-tuning raised it 2.3 %, LoRA only 1.0 %: LoRA forgot less, a small reproduction of Biderman et al. 2024. Careful with QLoRA: it is compared with its own 4-bit base, which already starts worse (13.87 vs 12.50). Training recovered part of the quantization loss, so its −1.4 % is not negative forgetting.</aside>
+</section>

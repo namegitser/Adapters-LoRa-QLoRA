@@ -1,0 +1,5 @@
+LoRA trains 56x fewer params than full FT
+LoRA peak memory = 0.41x of full FT (2.5x less)
+LoRA checkpoint = 28x smaller
+QLoRA peak memory = 2.4x less than full FT, 0.98x less than LoRA
+QLoRA sec/step = 1.28x LoRA's (>1 means slower)

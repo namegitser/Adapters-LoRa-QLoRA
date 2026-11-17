@@ -1,0 +1,36 @@
+<section id="limits" class="alt">
+<div class="head">
+<p class="eyebrow">5 · TRADE-OFFS</p>
+<h2>Not free: when to use PEFT, and when not</h2>
+</div>
+<table class="tbl rise" style="--i:0">
+<tr><th style="width:42%">Use PEFT when…</th><th style="width:58%">Think twice when…</th></tr>
+<tr><td>GPU memory is limited</td><td>It needs lots of new knowledge (new language, domain)</td></tr>
+<tr><td>Many tasks share one base model</td><td>You have abundant compute and need top accuracy</td></tr>
+<tr><td>You adapt style, format, instructions</td><td>Prompting or RAG already solves it, zero training</td></tr>
+</table>
+<div class="row" style="gap:24px;align-items:stretch">
+<div class="card rise" style="--i:1;width:398px;gap:8px;padding:24px">
+<h3>New knobs</h3>
+<p class="ct">Rank r, α, target modules, learning rate</p>
+</div>
+<div class="card rise" style="--i:2;width:398px;gap:8px;padding:24px">
+<h3>QLoRA is slower</h3>
+<p class="ct">De-quantized every pass. Ours: <b>1.28×</b> slower than LoRA</p>
+</div>
+<div class="card rise" style="--i:3;width:398px;gap:8px;padding:24px">
+<h3>4-bit costs a bit</h3>
+<p class="ct">Ours: base loss 1.318 → <b>1.412</b> after 4-bit</p>
+</div>
+<div class="card rise" style="--i:4;width:398px;gap:8px;padding:24px">
+<h3>Unmerged adds lag</h3>
+<p class="ct">Swapped adapters add inference time</p>
+</div>
+</div>
+<div class="card rise" style="--i:5;flex-direction:row;gap:32px;align-items:center;border-color:#EB6834;padding:24px 32px">
+<x-icon name="Warning" style="color:#B4441A;width:56px;height:56px"></x-icon>
+<p class="ct" style="width:1500px"><b class="ink">Honest weakness:</b> Biderman et al. 2024, “LoRA Learns Less and Forgets Less”. On code and math LoRA lags full fine-tuning, but keeps more of the base model’s skills. Ours: WikiText-2 perplexity <b>+1.0 %</b> LoRA vs <b>+2.3 %</b> full FT.</p>
+</div>
+<div class="foot"><p class="ft">Biderman et al., TMLR 2024 · Dettmers et al. 2023</p><p class="ft pg"></p></div>
+<aside>Speaker D · 4:20–5:30. Table first: when PEFT fits and when to think twice. Then the four costs, one sentence each: new hyperparameters to tune; QLoRA trains slower than 16-bit LoRA because the 4-bit weights are de-quantized on every forward and backward pass (give our own ratio from h1_ratios.txt); 4-bit quantization can lose a little quality; adapters kept separate (to hot-swap many) and classic adapter layers add inference latency. Then the honest weakness: Biderman et al. 2024 found LoRA underperforms full fine-tuning on code and math continued pre-training, but forgets less of what the base model knew. Our H4 agrees at small scale: after the same Alpaca training, LoRA's WikiText-2 perplexity rose 1.0 %, full fine-tuning's 2.3 %. On learning, LoRA did not lag here (held-out loss 1.272 vs 1.285), which fits Biderman: the gap shows on hard domains like code and math, not on short instruction tuning.</aside>
+</section>

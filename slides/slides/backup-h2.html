@@ -1,0 +1,28 @@
+<section id="backup-h2">
+<div class="head">
+<p class="eyebrow">BACKUP · H2 · BIGGER MODEL</p>
+<h2>A 3 B model: full fine-tuning does not fit, QLoRA does</h2>
+</div>
+<div class="row" style="gap:48px;align-items:flex-start">
+<img class="rise" src="/_blob/9501b00d1bcc1f715b2dd596765ffbc9" alt="Peak GPU memory on Qwen2.5-3B: full FT out of memory, LoRA 10.0 GB, QLoRA 7.6 GB" style="--i:0;width:1040px;height:650px;object-fit:contain;border-radius:16px;background:#FCFCFA">
+<div class="col" style="width:560px;gap:20px">
+<div class="card rise" style="--i:1;gap:6px;padding:24px 32px">
+<p class="lbl">FULL FT</p>
+<p class="mono" style="font-size:44px;font-weight:600;color:#14213D;line-height:1.1">OOM</p>
+<p class="ct">Out of memory at step 0, needing 14.3 of 14.6 GB</p>
+</div>
+<div class="card rise" style="--i:2;gap:6px;padding:24px 32px">
+<p class="lbl">LORA</p>
+<p class="mono" style="font-size:44px;font-weight:600;color:#14213D;line-height:1.1">10.0 GB</p>
+<p class="ct">Trains: the 3 B base is still 16-bit</p>
+</div>
+<div class="card rise" style="--i:3;gap:6px;padding:24px 32px">
+<p class="lbl">QLORA</p>
+<p class="mono" style="font-size:44px;font-weight:600;color:#14213D;line-height:1.1">7.6 GB</p>
+<p class="ct">Trains: the 4-bit base holds 2.6 GB of weights</p>
+</div>
+</div>
+</div>
+<div class="foot"><p class="ft">Qwen2.5-3B · 50 steps · seq 512 · Kaggle Tesla T4 (14.6 GB) · seed 42</p><p class="ft pg"></p></div>
+<aside>Backup, only if asked. Full fine-tuning of Qwen2.5-3B needs weights, gradients and optimizer state for 3.1 B parameters, and it ran out of memory at the first training step on a 14.6 GB T4. LoRA trains the same model in 10.0 GB because only 30 M adapter weights get gradients and optimizer state. QLoRA also stores the frozen base in 4-bit, cutting it to 7.6 GB. This is QLoRA's core claim at small scale. Speed: LoRA 8.0 s/step, QLoRA 10.0 s/step.</aside>
+</section>
